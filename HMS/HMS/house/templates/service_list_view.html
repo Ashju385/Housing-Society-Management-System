@@ -1,0 +1,29 @@
+{% extends "navber.html" %}
+{% block content %}
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Housing Society Management System</title>
+    <!-- Main StyleSheet -->
+    <link rel="stylesheet" href="{% static 'house/css/service_list_view.css' %}" />
+  </head>
+
+  <body>
+    <h1 id="brand">Housing Society Management System</h1>
+    <div class="container">
+        {% for service_category, service_url in service_list %}
+        <div class="service">
+            <a href="{{service_url}}">
+                <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                <h2>{{service_category}}</h2>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+  </body>
+</html>
+
+{%endblock%}

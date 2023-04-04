@@ -1,0 +1,250 @@
+{% extends "navber.html" %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haven Housing</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Bootstrap 5 CDN Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- Custom File's Link -->
+    <link rel="stylesheet" href="{% static 'house/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'house/css/responsive-style.css' %}">
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+
+    <!-- Banner section -->
+    <section id="home" class="banner_wrapper p-0">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper"> 
+                <div class="swiper-slide imadd1">
+                    <div class="slide-caption text-center">
+                        <div>
+                            <h1>Housing Society Management System</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    <!-- Banner section exit -->
+
+    <!-- About section -->
+    <section id="about" class="about_wrapper">
+        <div class="container">
+            <div class="row flex-lg-row flex-column-reverse ">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h3>Welcome to our<span> Housing Community Management System<br class="d-none d-lg-block">
+                            to spend your weekend</span> with us</h3>
+                    <a href="#" class="main-btn mt-4">Explore</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- About section exit -->
+
+    <!-- Service section -->
+    <section id="rooms" class="rooms_wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 section-title text-center mb-5">
+                    <h6>What We can do for you</h6>
+                    <h3>Our Services</h3>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-md-3 mb-4 mb-lg-0">
+                    <div class="room-item">
+                        <img src="{% static 'house/img/room/cs.webp' %}" class="img-fluid">
+                        <div class="room-item-wrap">
+                            <div class="room-content">
+                                <h5 class="text-white mb-lg-5 text-decoration-underline">Community Center</h5>
+                                <p class="text-white">With its spacious facilities, the community center is the perfect venue for
+                                     hosting events and creating memorable experiences with friends and family.</p>
+                                <p class="text-white fw-bold mt-lg-4">10000tk/Day</p>
+                                {% if request.user.is_authenticated %}
+                                <a class="main-btn border-white text-white mt-lg-5" href="{% url 'house:ServiceListView' %}">Go to Service Page</a>
+                                {% else %}
+                                <a class="main-btn border-white text-white mt-lg-5" href="{% url 'house:login' %}">Log In</a>
+                                {% endif %}
+                            </div>
+                        </div> 
+                    </div> 
+                </div>
+                <div class="col-md-3 mb-4 mb-lg-0">
+                    <div class="room-item">
+                        <img src="{% static 'house/img/room/ps.webp' %}" class="img-fluid">
+                        <div class="room-item-wrap">
+                            <div class="room-content">
+                                <h5 class="text-white mb-lg-5 text-decoration-underline">Picnic Spot</h5>
+                                <p class="text-white">With its scenic surroundings, the picnic spot is the perfect 
+                                    place to enjoy a meal with loved ones or to simply relax and unwind in nature</p>
+                                <p class="text-white fw-bold mt-lg-4">  5000tk/Day</p>
+                                {% if request.user.is_authenticated %}
+                                <a class="main-btn border-white text-white mt-lg-5" href="{% url 'house:ServiceListView' %}">Go to Service Page</a>
+                                {% else %}
+                                <a class="main-btn border-white text-white mt-lg-5" href="{% url 'house:login' %}">Log In</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-3 mb-4 mb-lg-0">
+                    <div class="room-item">
+                        <img src="{% static 'house/img/room/sm.webp' %}" class="img-fluid">
+                        <div class="room-item-wrap">
+                            <div class="room-content">
+                                <h5 class="text-white mb-lg-5 text-decoration-underline">Swimming Pool</h5>
+                                <p class="text-white">Whether it's for a refreshing swim or a fun pool party, the 
+                                    swimming pool at Haven Housing is the perfect spot to cool off and make a splash</p>
+                                <p class="text-white fw-bold mt-lg-4">1000tk/Day</p>
+                                {% if request.user.is_authenticated %}
+                                <a class="main-btn border-white text-white mt-lg-5" href="{% url 'house:ServiceListView' %}">Go to Service Page</a>
+                                {% else %}
+                                <a class="main-btn border-white text-white mt-lg-5" href="{% url 'house:login' %}">Log In</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-3 mb-4 mb-lg-0">
+                    <div class="room-item">
+                        <img src="{% static 'house/img/room/ts.webp' %}" class="img-fluid">
+                        <div class="room-item-wrap">
+                            <div class="room-content">
+                                <h5 class="text-white mb-lg-5 text-decoration-underline">Transport Services</h5>
+                                <p class="text-white">Haven Housing offers convenient transport services, 
+                                    including shuttle buses to nearby locations</p>
+                                <p class="text-white fw-bold mt-lg-4">500tk/Day</p>
+                                {% if request.user.is_authenticated %}
+                                <a class="main-btn border-white text-white mt-lg-5" href="{% url 'house:ServiceListView' %}">Go to Service Page</a>
+                                {% else %}
+                                <a class="main-btn border-white text-white mt-lg-5" href="{% url 'house:login' %}">Log In</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Service Section Exit -->
+
+    <!-- Rules section -->
+    <section id="services" class="services_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 section-title text-center mb-5">
+                    <h6>We Are Here For You</h6>
+                    <h3>Some Rules</h3>
+                </div>
+            </div>
+            <div class="row align-items-center service-item-wrap">
+                <div class="col-lg-7 p-lg-0">
+                    <!--Service Area Start-->
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade active show" id="spa" role="tabpanel">
+                            <img src="{% static 'house/img/services/ts_1.png' %}" alt="">
+                        </div>
+                        <div class="tab-pane fade" id="restaurent" role="tabpanel">
+                            <img src="{% static 'house/img/services/service2.webp' %}" alt="">
+                        </div>
+                        <div class="tab-pane fade" id="swimming" role="tabpanel">
+                            <img src="{% static 'house/img/services/service3.webp' %}" alt="">
+                        </div>
+                        <div class="tab-pane fade" id="conference" role="tabpanel">
+                            <img src="{% static 'house/img/services/service6.webp' %}" alt="">
+                        </div>
+                    </div>
+                    <!--Rules Area End-->
+                </div>
+                <div class="col-lg-5 position-relative">
+                    <!--Rules Tab Menu Area Start-->
+                    <div class="service-menu-area">
+                        <ul class="nav">
+                            <li>
+                                <a data-bs-toggle="tab" href="#spa" class="active">
+                                    <span class="service-icon">
+                                        <img src="{% static 'house/img/services/service-icon1.webp' %}" alt="">
+                                    </span>
+                                    <h5>Transport Services</h5>
+                                    <p><span>In Transport Services, </span>Eating and drinking are not allowed, Any damage to the vehicle will 
+                                        be charged.</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tab" href="#restaurent">
+                                    <span class="service-icon">
+                                        <img src="{% static 'house/img/services/service-icon2.webp' %}" alt="">
+                                    </span>
+                                    <h5>Picnic Spot</h5>
+                                    <p><span>In picnic spot, </span>All trash and litter must be properly disposed,
+                                         Children must be supervised by an adult.</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tab" href="#swimming">
+                                    <span class="service-icon">
+                                        <img src="{% static 'house/img/services/service-icon3.webp' %}" alt="">
+                                    </span>
+                                    <h5>Swimming Pool</h5>
+                                    <p><span>In Swimming pool, </span>Running, diving, or any other unsafe behavior is not allowed, 
+                                        Smoking or consuming alcohol is strictly prohibited.</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tab" href="#conference">
+                                    <span class="service-icon">
+                                        <img src="{% static 'house/img/services/service-icon4.webp' %}" alt="">
+                                    </span>
+                                    <h5>Community center</h5>
+                                    <p><span>In community center, </span> Smoking or consuming alcohol is strictly prohibited, 
+                                        Any damage to the community center will be charged.</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Rules Tab Menu Area End-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Rules section Exit -->
+
+    <!-- Gallery section -->
+    <!-- Pricing section -->
+    <!-- Pricing Section Exit  -->
+
+
+
+    <!-- Bootstrap 5 JS CDN Links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Custom Js Link -->
+    <script src="{% static 'house/js/main.js' %}"></script>
+</body>
+
+</html>
+
+{%endblock%}

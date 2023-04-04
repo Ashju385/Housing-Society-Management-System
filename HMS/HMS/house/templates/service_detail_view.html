@@ -1,0 +1,116 @@
+{% extends "navber.html" %}
+{% block content %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Detail</title>
+    <script src="https://kit.fontawesome.com/692189991f.js" crossorigin="anonymous"></script>
+
+    <!-- Main StyleSheet -->
+    <link rel="stylesheet" href="{% static 'house/css/service_detail_view.css' %}">
+
+</head>
+
+<body>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <!-- Service Image -->
+
+        <!-- Service Details -->
+        <div class="service">
+
+            <!-- Div 1: Back to Home -->
+            <div class="home">
+                <a href="{% url 'house:ServiceListView' %}"><i class="fas fa-arrow-alt-circle-left">Go back</i></a>
+            </div>
+
+            <!-- Div 2: Service Information -->
+            <div class="service-info">
+                <h1>{{service_catagory}} Booking</h1>
+            </div>
+
+            <!-- Div 3: Service Booking Form -->
+            <form id="booking-form" action="" method="POST">
+
+                {% csrf_token %}
+
+                <!-- Input Div -->
+                <div class="input-div">
+                    <label for="id_check_in">Check In : </label>
+                    <input type="date" id="id_check_in" name="check_in">
+                </div>
+
+                <!-- Input Div -->
+                <div class="input-div">
+                    <label for="id_check_out">Check Out : </label>
+                    <input type="date" id="id_check_out" name="check_out" onchange="calcDays()">
+                </div>
+                <div class="input-div">
+<!--                    <button onclick = "calcDays()">Total days</button>-->
+                    <label for="id_total_d">Total Days:</label>
+                    <input type = "number" id = "id_total_d" name = "total_d">
+                </div>
+                <div class="input-div">
+                    <label for = "id_total_price" > Total Price:</label>
+                    <input type = "number" id = "id_total_price" name = "total_price">
+                </div>
+
+                <!-- Input Div -->
+                <div class="input-div">
+                    <button type="submit" class="btn btn-secondary">Book Now!</button>
+                </div>
+
+            </form>
+
+        </div> <!-- END Room Div -->
+
+    </div> <!-- END Main Content Div -->
+
+    <script>
+        var date = new Date()
+        var month = date.getMonth()+1;
+        if(month<10){
+            month = '0'+month;
+        }
+        var tdate = date.getDate();
+        if(tdate<10){
+            tdate = '0'+tdate;
+        }
+        var year = date.getUTCFullYear();
+        var minDate = year+"-"+month+'-'+tdate;
+        document.getElementById("id_check_in").setAttribute('min', minDate);
+        document.getElementById("id_check_out").setAttribute('min', minDate);
+
+        function calcDays(){
+            var d1 = new Date(document.getElementById("id_check_in").value);
+            var d2 = new Date(document.getElementById("id_check_out").value);
+
+            time = d2.getTime() - d1.getTime();
+            days =  Math.abs(time/(1000*3600*24));
+            document.getElementById("id_total_d").value = days;
+
+            var s = "{{service_catagory}}";
+            if(s=="Community Center")
+                var amount = days*10000;
+            else if(s=="Picnic Spot")
+                var amount = days*5000;
+            else if(s=="Swimming Pool")
+                var amount = days*1000;
+            else if(s=="Transport Service")
+                var amount = days*500;
+
+
+            document.getElementById("id_total_price").value = amount;
+
+        }
+    </script>
+
+</body>
+
+</html>
+{% endblock %}
